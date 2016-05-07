@@ -39,4 +39,4 @@ JSON.stringify(stree.root);
 }
 ```
 ### Visual tree
-<img src="https://github.com/vasilionjea/suffix-tree/blob/master/bananas-suffix-tree.png">
+<img src="https://github.com/vasilionjea/suffix-tree/blob/master/suffix-tree-bananas.png">
