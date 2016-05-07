@@ -3,6 +3,7 @@
  * quadratic time and linear space.
  *
  * Online course: https://www.youtube.com/watch?v=hLsrPsFHPcQ
+ * Original source: http://nbviewer.jupyter.org/gist/BenLangmead/6665861
  */
 (function(global) {
   /**
