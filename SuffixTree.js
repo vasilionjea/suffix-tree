@@ -8,20 +8,17 @@
   /**
    * Utils
    */
-  function _normalizeWord(word) {
-    return word.toLowerCase();
+  function _normalize(str) {
+    // $ used to end suffixes.
+    return str.toLowerCase() + '$';
   }
 
-  function _getSuffixes(word) {
-    var suffixes = [],
-      i = 0,
-      normalizedWord = _normalizeWord(word);
+  function _eachSuffix(str, callback) {
+    var i = 0;
 
-    for(i; i < normalizedWord.length; i += 1) {
-      suffixes.push(normalizedWord.slice(i));
+    for(i; i < str.length; i += 1) {
+      callback(str.slice(i), i)
     }
-
-    return suffixes;
   }
 
   function _createNode(label) {
@@ -34,29 +31,22 @@
   /**
    * SuffixTree
    */
-  function SuffixTree(str) {
-    str += '$'; // completes suffix
+  function SuffixTree() {
+    var str = _normalize(arguments[0]);
 
+    // Add root node.
     this._addRoot(str);
-    this._addSuffixes(str);
+
+    // Add all suffixes from longest to shortest.
+    _eachSuffix(str.slice(1), this._add.bind(this));
   }
 
   SuffixTree.prototype = {
     constructor: SuffixTree,
 
-    // Create root node
     _addRoot: function(str) {
       this.root = _createNode();
       this.root.children[str[0]] = _createNode(str);
-    },
-
-    // Add all suffixes from longest to shortest
-    _addSuffixes: function(str) {
-      var self = this;
-
-      _getSuffixes(str.slice(1)).forEach(function(suffix, idx) {
-        self._add(suffix, idx);
-      });
     },
 
     _add: function(suffix, idx) {
@@ -67,7 +57,7 @@
       // Label related
       var child, label, k;
 
-      // Adding related
+      // Adding/bisecting related
       var cExist, cNew, mid;
 
       // Add each suffix's char to tree
