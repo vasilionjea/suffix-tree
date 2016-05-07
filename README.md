@@ -8,7 +8,7 @@ A JavaScript implementation the suffix tree data structure that's compressed wit
 var stree = new SuffixTree('bananas');
 
 // JSON tree
-JSON.stringify(stree);
+JSON.stringify(stree.root);
 {
   "label": "",
   "children": {
