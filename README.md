@@ -1,6 +1,6 @@
 # suffix-tree
 
-A JavaScript implementation of the suffix tree data structure that's compressed with labels. Currently supports only adding to the tree. More info on suffix trees here: https://en.wikipedia.org/wiki/Suffix_tree
+A JavaScript implementation of the suffix tree data structure that's compressed with labels. Currently supports only adding to the tree. More info on suffix trees here: https://en.wikipedia.org/wiki/Suffix_tree Please note that this is **not** an implementation of Ukkonen's algorithm.
 
 ### Example
 ```javascript
